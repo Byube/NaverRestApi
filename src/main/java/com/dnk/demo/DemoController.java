@@ -1,9 +1,6 @@
 package com.dnk.demo;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import com.dnk.demo.dto.DemoDto;
+import com.dnk.demo.dto.MysecretDto;
 import com.dnk.demo.service.DemoService;
 
 @Controller
@@ -25,32 +21,39 @@ public class DemoController {
 	
 	@RequestMapping("/test")
 	public String test() {
-		return "test/index";
+		String address = "test/index";
+		return address;
 	}
 	
 	@RequestMapping("/test2")
 	public String test2(Model model) {
+		String address = "test/index";
 		String test = demoService.test();
 		model.addAttribute("message", test);
-		return "test/index";
+		return address;
 	}
 
+	//중국어번역 (Naver Rest Api)
 	@RequestMapping("/chinese")
 	@ResponseBody
 	public String Chinese(@RequestParam(value = "korean", defaultValue = "-")String korean,
 									Model model) throws Exception{		
-		DemoDto dd = new DemoDto();
-		dd.setKorean(korean);		
-		String china = demoService.getChinese(dd);
+		MysecretDto msd = new MysecretDto();
+		msd.setSeq(1);
+		msd.setKorean(korean);		
+		String china = demoService.getChinese(msd);
 		return china;
 	}
+	
+	//영어번역 (Naver Rest Api)
 	@RequestMapping("/english")
 	@ResponseBody
 	public String English(@RequestParam(value = "korean", defaultValue = "-")String korean,
 									Model model) throws Exception{		
-		DemoDto dd = new DemoDto();
-		dd.setKorean(korean);		
-		String english = demoService.getEnglish(dd);
+		MysecretDto msd = new MysecretDto();
+		msd.setSeq(1);
+		msd.setKorean(korean);		
+		String english = demoService.getEnglish(msd);
 		return english;
 	}
 	

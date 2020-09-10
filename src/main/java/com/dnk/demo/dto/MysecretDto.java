@@ -7,8 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DemoDto {
-	
+public class MysecretDto {
+	private int seq;
+	private String clientId;
+	private String clientSecret;
+	private String restapikey;
+	private String kakaoId;
+	private String kakaoapikey;
 	private String korean;
-
 }

@@ -1,7 +1,6 @@
 package com.dnk.demo.service;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -13,15 +12,17 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dnk.demo.dto.DemoDto;
+import com.dnk.demo.dao.ApiDao;
+import com.dnk.demo.dto.MysecretDto;
 
 @Service
 public class DemoServiceImpl implements DemoService {
-
-	private String clientId = "네이버에서 받은 ClientId 입력";
-	private String clientSecret = "네이버에서 받은 ClientSecret 입력";
+	
+	@Autowired
+	ApiDao dao;
 
 	@Override
 	public String test() {
@@ -29,9 +30,13 @@ public class DemoServiceImpl implements DemoService {
 		return test;
 	}
 
+	//중국어번역(Naver Rest Api)
 	@Override
-	public String getChinese(DemoDto dd) {
-		String korean = dd.getKorean();
+	public String getChinese(MysecretDto msd) {
+		MysecretDto md = dao.getSecret(msd);
+		String clientId  = md.getClientId();
+		String clientSecret = md.getClientSecret();
+		String korean = msd.getKorean();
 		String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
 		String text;
 		String result = "";
@@ -84,9 +89,13 @@ public class DemoServiceImpl implements DemoService {
 		return result;
 	}
 
+	//영어번역(Naver Rest Api)
 	@Override
-	public String getEnglish(DemoDto dd) {
-		String korean = dd.getKorean();
+	public String getEnglish(MysecretDto msd) {
+		MysecretDto md = dao.getSecret(msd);
+		String clientId  = md.getClientId();
+		String clientSecret = md.getClientSecret();
+		String korean = msd.getKorean();
 		String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
 		String text;
 		String result = "";
