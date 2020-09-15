@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dnk</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>demo</name>
 	<description>DEMO</description>
 
@@ -47,7 +45,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-
+		
 		<!-- JDBC에서 실제 MySQL과의 연결은 드라이버에게 위임합니다. 그 때 사용할 드라이버 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -80,7 +78,7 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-
+		
 		<!-- 유틸용, Maps.of 같은거 쓸 수 있게 해줌 -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
@@ -95,8 +93,8 @@
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency>
-
-		<!-- 메일 전송 용 -->
+		
+		<!-- 메일 전송 용  -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -105,7 +103,7 @@
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<version>1.6.2</version>
-		</dependency>
+		</dependency>	
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -117,7 +115,7 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1</version>
 		</dependency>
-
+		
 	</dependencies>
 
 	<build>

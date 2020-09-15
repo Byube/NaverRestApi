@@ -7,22 +7,22 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dnk.demo.dao.ApiDao;
 import com.dnk.demo.dto.MysecretDto;
 
 @Service
 public class DemoServiceImpl implements DemoService {
 	
-	@Autowired
-	ApiDao dao;
+	private String clientId ;
+	private String clientSecret;
+	
 
 	@Override
 	public String test() {
@@ -33,9 +33,6 @@ public class DemoServiceImpl implements DemoService {
 	//중국어번역(Naver Rest Api)
 	@Override
 	public String getChinese(MysecretDto msd) {
-		MysecretDto md = dao.getSecret(msd);
-		String clientId  = md.getClientId();
-		String clientSecret = md.getClientSecret();
 		String korean = msd.getKorean();
 		String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
 		String text;
@@ -60,9 +57,9 @@ public class DemoServiceImpl implements DemoService {
 			osw.flush();
 
 			int responseCode = con.getResponseCode();
-		//	result += "responseCode  : " + responseCode;
-		//	result += "\n";
+		
 			if (responseCode != 200) {
+				result += "responseCode : " + responseCode;
 				Map<String, List<String>> map = con.getRequestProperties();
 				result += "Printing Response Header...\n";
 				for (Map.Entry<String, List<String>> entry : map.entrySet()) {
@@ -74,7 +71,7 @@ public class DemoServiceImpl implements DemoService {
 				}
 			}
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(),StandardCharsets.UTF_8));
 			while ((line = br.readLine()) != null) {
 				result = line;
 			}			
@@ -92,9 +89,7 @@ public class DemoServiceImpl implements DemoService {
 	//영어번역(Naver Rest Api)
 	@Override
 	public String getEnglish(MysecretDto msd) {
-		MysecretDto md = dao.getSecret(msd);
-		String clientId  = md.getClientId();
-		String clientSecret = md.getClientSecret();
+
 		String korean = msd.getKorean();
 		String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
 		String text;
@@ -122,6 +117,7 @@ public class DemoServiceImpl implements DemoService {
 //			result += "responseCode  : " + responseCode;
 //			result += "\n";
 			if (responseCode != 200) {
+				result += "responseCode  : " + responseCode;
 				Map<String, List<String>> map = con.getRequestProperties();
 				result += "Printing Response Header...\n";
 				for (Map.Entry<String, List<String>> entry : map.entrySet()) {

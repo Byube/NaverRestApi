@@ -17,7 +17,6 @@
 				data:{korean:ko},
 				success:function(v){
 					var chinese = v.message.result.translatedText;
-					console.log(chinese);
 					$("#china").text(chinese);
 				},error:function(e){
 					console.log(e);
