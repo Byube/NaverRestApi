@@ -16,11 +16,13 @@
 				dataType:"json",
 				data:{korean:ko},
 				success:function(v){
+					console.log(v);
 					var chinese = v.message.result.translatedText;
 					console.log(chinese);
 					$("#china").text(chinese);
 				},error:function(e){
 					console.log(e);
+					alert(e);
 				}
 			});
 		});

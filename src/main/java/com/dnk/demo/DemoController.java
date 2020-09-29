@@ -37,11 +37,13 @@ public class DemoController {
 	@RequestMapping("/chinese")
 	@ResponseBody
 	public String Chinese(@RequestParam(value = "korean", defaultValue = "-")String korean,
-									Model model) throws Exception{		
+									Model model) throws Exception{
+		System.out.println(korean);
 		MysecretDto msd = new MysecretDto();
 		msd.setSeq(1);
 		msd.setKorean(korean);		
-		String china = demoService.getChinese(msd);
+		//String china = demoService.getChinese(msd);
+		String china = demoService.getChinese2(msd);
 		return china;
 	}
 	
