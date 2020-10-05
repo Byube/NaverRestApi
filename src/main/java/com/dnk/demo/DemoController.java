@@ -38,7 +38,6 @@ public class DemoController {
 	@ResponseBody
 	public String Chinese(@RequestParam(value = "korean", defaultValue = "-")String korean,
 									Model model) throws Exception{
-		System.out.println(korean);
 		MysecretDto msd = new MysecretDto();
 		msd.setSeq(1);
 		msd.setKorean(korean);		
