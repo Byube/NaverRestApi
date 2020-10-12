@@ -41,8 +41,7 @@ public class DemoController {
 		MysecretDto msd = new MysecretDto();
 		msd.setSeq(1);
 		msd.setKorean(korean);		
-		//String china = demoService.getChinese(msd);
-		String china = demoService.getChinese2(msd);
+		String china = demoService.getChinese(msd);
 		return china;
 	}
 	
