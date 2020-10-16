@@ -18,6 +18,17 @@ public class DemoController {
 	@Autowired
 	DemoService demoService;
 	
+	@RequestMapping("/returngood")
+	public String returnGood() {
+		String address = "test/reciveCode";
+		return address;
+	}
+
+	@RequestMapping("/login")
+	public String login() {
+		String address = "test/login";
+		return address;
+	}
 	
 	@RequestMapping("/test")
 	public String test() {
