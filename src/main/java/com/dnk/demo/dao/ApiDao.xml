@@ -2,15 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dnk.demo.dao.ApiDao">
-	
-	<select id="getSecret" parameterType="com.dnk.demo.dto.MysecretDto" resultType="com.dnk.demo.dto.MysecretDto">
-		select	clientId, clientSecret
-		from 	mysecret
-		where	seq = #{seq}
-	</select>
-	<select id="getkakao" parameterType="com.dnk.demo.dto.MysecretDto" resultType="com.dnk.demo.dto.MysecretDto">
-		select	kakaoapikey
-		from 	mysecret
-		where	seq = #{seq}
+	<select id="getGoogleSecret" parameterType="java.lang.Integer" resultType="com.dnk.demo.dto.GoogleDto">
+		select 	google_refreshToken
+				,google_clientId
+				,google_clientSecret
+				,google_clientCustomerId
+				,google_developerToken
+		from 	Mng.dbo.API_Google_Key
+		where	customerId = #{customerId}
 	</select>
 </mapper>

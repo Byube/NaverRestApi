@@ -15,8 +15,8 @@
 	<a href="/login">로그인하러 가기</a>
 	<form action="https://www.googleapis.com/oauth2/v4/token" method="post" enctype="application/x-www-form-urlencoded"><br>
 	code	:	<input type="text" value="<%=request.getParameter("code") %>" name="code"><br>
-	client_id	:	<input type="text" value="296274828209-doopu64tlq1nj9it1oqb3g08s5diqn01.apps.googleusercontent.com" name="client_id"><br> 
-	client_secret	:	<input type="text" value="cbVcZy1wU3PXURu-36xjUGRV" name="client_secret"><br>
+	client_id	:	<input type="text" name="client_id" placeholder="clientId를 입력하세요"><br> 
+	client_secret	:	<input type="text" name="client_secret" placeholder="clientSecret를 입력하세요"><br>
 	redirect_uri	:	<input type="text" value="http://localhost:8080/returngood" name="redirect_uri"><br>
 	grant_type	:	<input type="text" value="authorization_code" name="grant_type"><br>
 	<input type="submit">

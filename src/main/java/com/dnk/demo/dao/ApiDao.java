@@ -1,13 +1,11 @@
 package com.dnk.demo.dao;
 
 
-
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dnk.demo.dto.MysecretDto;
+import com.dnk.demo.dto.GoogleDto;
 
 @Mapper
 public interface ApiDao {
-	public MysecretDto getSecret(MysecretDto msd);	
-	public MysecretDto getkakao(MysecretDto msd);	
+	public GoogleDto getGoogleSecret(int customerId);
 }
