@@ -59,6 +59,7 @@ public class GoogleServiceImpl implements GoogleService{
 		System.out.println("------------------------");
 		System.out.println(adWordsServices.toString());
 		System.out.println(session.getDeveloperToken());
+		System.out.println(session.getClientCustomerId());
 		System.out.println("------------------------");
 		
 		// 모든 광고 그룹의 값을 가져오기
