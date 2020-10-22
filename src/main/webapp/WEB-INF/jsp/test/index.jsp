@@ -6,44 +6,7 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-	$(function() {
-		$("#chinese").click(function(){
-			var ko = $("#korean").val();
-			$.ajax({
-				url:"/chinese",
-				type:"GET",
-				dataType:"json",
-				data:{korean:ko},
-				success:function(v){
-					var chinese = v.message.result.translatedText;
-					$("#china").text(chinese);
-				},error:function(e){
-					console.log(e);
-					alert(e);
-				}
-			});
-		});
-		$("#english").click(function(){
-			var ko = $("#korean").val();
-			$.ajax({
-				url:"/english",
-				type:"GET",
-				dataType:"json",
-				data:{korean:ko},
-				success:function(v){
-					var english = v.message.result.translatedText;
-					$("#usa").text(english);
-				},error:function(e){
-					console.log(e);
-				}
-			});
-		});
-		$("#clean").click(function(){
-			location.reload();
-		});
-	});
-</script>
+<script src="/resources/js/papago.js"></script>
 <title>외국어가 안되면 뷰베 스쿨</title>
 </head>
 <body>
