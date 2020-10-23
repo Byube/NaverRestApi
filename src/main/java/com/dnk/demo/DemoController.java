@@ -18,26 +18,6 @@ public class DemoController {
 	@Autowired
 	DemoService demoService;
 	
-	@RequestMapping("/clientid")
-	public String insertClientid() {
-		String address = "test/clientidInsert";
-		return address;
-	}
-	
-	
-	@RequestMapping("/returngood")
-	public String returnGood() {
-		String address = "test/reciveCode";
-		return address;
-	}
-
-	@RequestMapping("/login")
-	public String goLogin(@RequestParam(value = "clientid", defaultValue = "-") String clientid, Model model) {
-		String address = "test/login";
-		model.addAttribute("clientid", clientid);
-		return address;
-	}
-	
 	@RequestMapping("/test")
 	public String test() {
 		String address = "test/index";
